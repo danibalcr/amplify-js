@@ -73,9 +73,10 @@ export const handleSignIn = async (
 		) {
 			logger.debug('custom challenge', user.challengeParam);
 			handleAuthStateChange(AuthState.CustomConfirmSignIn, user);
-		} else {
-			await checkContact(user, handleAuthStateChange);
 		}
+		// else {
+		// 	await checkContact(user, handleAuthStateChange);
+		// }
 	} catch (error) {
 		if (error.code === 'UserNotConfirmedException') {
 			logger.debug('the user is not confirmed');

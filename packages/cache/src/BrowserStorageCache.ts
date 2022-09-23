@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+import { Amplify } from '@aws-amplify/core';
 import { defaultConfig, getCurrTime } from './Utils';
 
 import { StorageCache } from './StorageCache';
@@ -498,6 +499,8 @@ export class BrowserStorageCacheClass extends StorageCache implements ICache {
 }
 
 export const BrowserStorageCache: ICache = new BrowserStorageCacheClass();
+
+Amplify.register(BrowserStorageCache);
 
 /**
  * @deprecated use named import

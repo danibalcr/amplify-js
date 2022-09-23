@@ -10,10 +10,10 @@
   },
   "sideEffects": [
     "./src/reactnative.ts",
-    "./src/index.ts",
-    "./lib/index.js",
+    "./src/BrowserStorageCache.ts",
+    "./lib/BrowserStorageCache.js",
     "./lib/reactnative.js",
-    "./lib-esm/index.js",
+    "./lib-esm/BrowserStorageCache.js",
     "./lib-esm/reactnative.js",
     "./dist/aws-amplify-cache.js",
     "./dist/aws-amplify-cache.min.js"

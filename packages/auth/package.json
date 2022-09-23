@@ -41,7 +41,6 @@
   },
   "homepage": "https://aws-amplify.github.io/",
   "dependencies": {
-    "@aws-amplify/cache": "4.0.56",
     "@aws-amplify/core": "4.7.5",
     "amazon-cognito-identity-js": "5.2.10",
     "crypto-js": "^4.1.1"

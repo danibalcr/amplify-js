@@ -34,10 +34,12 @@
 		"build:watch": "npm run clean && npm run stencil:watch",
 		"clean": "rimraf dist .stencil"
 	},
+	"peerDependencies": {
+		"aws-amplify": "3.x.x || 4.x.x"
+	},
 	"dependencies": {
 		"qrcode": "^1.4.4",
-		"uuid": "^8.2.0",
-		"aws-amplify": "legacy-ui-tests"
+		"uuid": "^8.2.0"
 	},
 	"devDependencies": {
 		"@aws-amplify/auth": "legacy-ui-tests",

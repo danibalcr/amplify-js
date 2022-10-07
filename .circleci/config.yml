@@ -1220,6 +1220,7 @@ releasable_branches: &releasable_branches
       - 1.0-stable
       - geo/main
       - ds-custom-pk
+      - legacy-ui-tests
 
 test_browsers: &test_browsers
   browser: [chrome, firefox]

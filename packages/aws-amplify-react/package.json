@@ -38,7 +38,7 @@
 		"@types/enzyme-adapter-react-16": "^1.0.3",
 		"@types/react": "^16.0.41",
 		"@types/react-dom": "^16.0.11",
-		"aws-amplify": "4.3.37",
+		"aws-amplify": "legacy-ui-tests",
 		"enzyme": "^3.1.0",
 		"enzyme-adapter-react-16": "^1.0.3",
 		"enzyme-to-json": "^3.2.1",
@@ -108,16 +108,14 @@
 	},
 	"dependencies": {
 		"qrcode.react": "^0.8.0",
-		"regenerator-runtime": "^0.11.1"
-	},
-	"peerDependencies": {
-		"@aws-amplify/analytics": "3.x.x",
-		"@aws-amplify/api": "3.x.x",
-		"@aws-amplify/auth": "3.x.x",
-		"@aws-amplify/core": "3.x.x",
-		"@aws-amplify/interactions": "3.x.x",
-		"@aws-amplify/storage": "3.x.x",
-		"@aws-amplify/ui": "2.x.x",
-		"@aws-amplify/xr": "2.x.x"
+		"regenerator-runtime": "^0.11.1",
+		"@aws-amplify/analytics": "legacy-ui-tests",
+		"@aws-amplify/api": "legacy-ui-tests",
+		"@aws-amplify/auth": "legacy-ui-tests",
+		"@aws-amplify/core": "legacy-ui-tests",
+		"@aws-amplify/interactions": "legacy-ui-tests",
+		"@aws-amplify/storage": "legacy-ui-tests",
+		"@aws-amplify/ui": "legacy-ui-tests",
+		"@aws-amplify/xr": "legacy-ui-tests"
 	}
 }

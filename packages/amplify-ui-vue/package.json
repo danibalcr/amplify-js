@@ -17,7 +17,7 @@
 		"url": "https://github.com/aws-amplify/amplify-js.git"
 	},
 	"dependencies": {
-		"@aws-amplify/ui-components": "1.9.35"
+		"@aws-amplify/ui-components": "legacy-ui-tests"
 	},
 	"devDependencies": {
 		"rimraf": "^3.0.2"

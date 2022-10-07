@@ -34,16 +34,13 @@
 		"build:watch": "npm run clean && npm run stencil:watch",
 		"clean": "rimraf dist .stencil"
 	},
-	"peerDependencies": {
-		"aws-amplify": "3.x.x || 4.x.x"
-	},
 	"dependencies": {
 		"qrcode": "^1.4.4",
 		"uuid": "^8.2.0",
 		"aws-amplify": "legacy-ui-tests"
 	},
 	"devDependencies": {
-		"@aws-amplify/auth": "4.6.8",
+		"@aws-amplify/auth": "legacy-ui-tests",
 		"@stencil/angular-output-target": "^0.0.2",
 		"@stencil/core": "1.15.0",
 		"@stencil/eslint-plugin": "0.2.1",

@@ -7,7 +7,7 @@ env:
 settings:
   import/resolver: webpack
 overrides:
-  files: *.test.js
+  files: __tests__/*
   rules: jest/valid-expect
 rules:
   # Git-controlled

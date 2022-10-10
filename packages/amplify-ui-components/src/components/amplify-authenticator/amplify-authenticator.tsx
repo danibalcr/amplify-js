@@ -63,14 +63,18 @@ export class AmplifyAuthenticator {
 	@Element() el: HTMLAmplifyAuthenticatorElement;
 
 	private handleExternalAuthEvent = ({ payload }) => {
+		logger.debug(`payload ->  ${payload.event}`);
+
 		switch (payload.event) {
 			case 'cognitoHostedUI':
 			case 'signIn':
+				logger.debug(`NEW - Signed In`);
 				checkContact(payload.data, dispatchAuthStateChangeEvent);
 				break;
 			case 'cognitoHostedUI_failure':
 			case 'parsingUrl_failure':
 			case 'signOut':
+			// DEBUG: Check if we need to do something here
 			case 'customGreetingSignOut':
 				return dispatchAuthStateChangeEvent(this.initialAuthState);
 		}
@@ -123,6 +127,7 @@ export class AmplifyAuthenticator {
 		);
 
 		if (nextAuthState === AuthState.SignedOut) {
+			// DEBUG:  Double check if this change re-renders the UI and do conditionally render
 			this.authState = this.initialAuthState;
 		} else {
 			this.authState = nextAuthState;

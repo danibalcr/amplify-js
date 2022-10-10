@@ -1806,49 +1806,79 @@ export class AuthClass {
 		}
 		const clientMetadata = this._config.clientMetadata; // TODO: verify behavior if this is override during signIn
 
-		if (this.inflightSessionPromise) {
-			return await this.inflightSessionPromise;
-		} else {
-			this.inflightSessionPromise = new Promise<CognitoUserSession>(
-				(res, rej) => {
-					user.getSession(
-						async (err, session) => {
-							if (err) {
-								logger.debug('Failed to get the session from user', user);
-								if (this.isSessionInvalid(err)) {
-									try {
-										await this.cleanUpInvalidSession(user);
-									} catch (cleanUpError) {
-										rej(
-											new Error(
-												`Session is invalid due to: ${err.message} and failed to clean up invalid session: ${cleanUpError.message}`
-											)
-										);
-										return;
-									}
-								}
-								rej(err);
-								return;
-							} else {
-								logger.debug('Succeed to get the user session', session);
-								res(session);
+		return new Promise((res, rej) => {
+			logger.debug('Getting the session from this user:', user);
+			user.getSession(
+				async (err, session) => {
+					if (err) {
+						logger.debug('Failed to get the session from user', user);
+						if (this.isSessionInvalid(err)) {
+							try {
+								await this.cleanUpInvalidSession(user);
+							} catch (cleanUpError) {
+								rej(
+									new Error(
+										`Session is invalid due to: ${err.message} and failed to clean up invalid session: ${cleanUpError.message}`
+									)
+								);
 								return;
 							}
-						},
-						{ clientMetadata, bypassCache }
-					);
-				}
-			)
-				.then(session => {
-					this.inflightSessionPromise = null;
-					return session;
-				})
-				.catch(err => {
-					this.inflightSessionPromise = null;
-					throw err;
-				});
-			return this.inflightSessionPromise;
-		}
+						}
+						rej(err);
+						return;
+					} else {
+						logger.debug('Succeed to get the user session', session);
+						res(session);
+						return;
+					}
+				},
+				{ clientMetadata }
+			);
+		});
+
+		// if (this.inflightSessionPromise) {
+		// 	return await this.inflightSessionPromise;
+		// } else {
+		// 	this.inflightSessionPromise = new Promise<CognitoUserSession>(
+		// 		(res, rej) => {
+		// 			user.getSession(
+		// 				async (err, session) => {
+		// 					if (err) {
+		// 						logger.debug('Failed to get the session from user', user);
+		// 						if (this.isSessionInvalid(err)) {
+		// 							try {
+		// 								await this.cleanUpInvalidSession(user);
+		// 							} catch (cleanUpError) {
+		// 								rej(
+		// 									new Error(
+		// 										`Session is invalid due to: ${err.message} and failed to clean up invalid session: ${cleanUpError.message}`
+		// 									)
+		// 								);
+		// 								return;
+		// 							}
+		// 						}
+		// 						rej(err);
+		// 						return;
+		// 					} else {
+		// 						logger.debug('Succeed to get the user session', session);
+		// 						res(session);
+		// 						return;
+		// 					}
+		// 				},
+		// 				{ clientMetadata, bypassCache }
+		// 			);
+		// 		}
+		// 	)
+		// 		.then(session => {
+		// 			this.inflightSessionPromise = null;
+		// 			return session;
+		// 		})
+		// 		.catch(err => {
+		// 			this.inflightSessionPromise = null;
+		// 			throw err;
+		// 		});
+		// 	return this.inflightSessionPromise;
+		// }
 	}
 
 	/**

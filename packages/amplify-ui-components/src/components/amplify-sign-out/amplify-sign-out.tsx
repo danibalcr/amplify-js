@@ -33,6 +33,7 @@ export class AmplifySignOut {
 		}
 
 		try {
+			// TODO: check if user is signed In before signing out
 			await Auth.signOut();
 			this.handleAuthStateChange(AuthState.SignedOut);
 		} catch (error) {

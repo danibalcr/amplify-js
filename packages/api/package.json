@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@types/zen-observable": "^0.8.0"
 	},
-	"files": ["lib", "lib-esm", "src"],
+	"files": ["lib", "lib-esm", "src", "index.*.d.ts"],
   "dependencies": {
 		"@aws-amplify/api-graphql": "2.3.19",
 		"@aws-amplify/api-rest": "2.0.55",
